@@ -1,0 +1,87 @@
+openapi: 3.0.0
+info:
+  title: TypeScript API
+  description: Example API built with TypeScript and Express
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /example:
+    get:
+      summary: Get example data
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      summary: Create a new example
+      requestBody:
+        description: Data to create a new example
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+      responses:
+        "201":
+          description: Example created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  message:
+                    type: string
+  /example/{id}:
+    put:
+      summary: Update an existing example
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Data to update an example
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+      responses:
+        "200":
+          description: Example updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  message:
+                    type: string
+    delete:
+      summary: Delete an example
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Example deleted successfully
